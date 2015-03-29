@@ -84,4 +84,4 @@ sitemap:
 deploy:
   type: git
   repo: https://github.com/SidneyXu/sidneyxu.github.com.git
-  branch: github-pages
+  branch: master
