@@ -79,6 +79,9 @@ feed:
 sitemap:
   path: sitemap.xml
 
+#swiftype
+swiftype_key: gtFszt63oN72WxGPHkhp
+
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
