@@ -9,8 +9,23 @@
   <span class="logo-line-after"><i></i></span>
 </h1>
 
+
+<!--增加swiftype搜索功能-->
+  	{% if config.swiftype_key %}
+    {% set swiftype_key = config.swiftype_key %}
+    <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+    _st('install','{{swiftype_key}}');
+    </script>
+    <!--增加swiftype搜索功能end-->
+
 {% if theme.menu %}
   <ul id="menu" class="menu">
+
     {% for name, path in theme.menu %}
       {% set itemName = name.toLowerCase() %}
       <li class="menu-item menu-item-{{ itemName }}">
