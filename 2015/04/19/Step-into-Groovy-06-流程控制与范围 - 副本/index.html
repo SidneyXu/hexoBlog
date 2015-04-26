@@ -20,9 +20,9 @@
 
 
 
-	<meta name="keywords" content="game,pc," />
+	<meta name="keywords" content="groovy," />
 
-  <title> first // Coffee Time </title>
+  <title> Step-into-Groovy-06-流程控制与范围 // Coffee Time </title>
 </head>
 
 <body>
@@ -126,7 +126,7 @@
           
           
             
-              first
+              Step-into-Groovy-06-流程控制与范围
             
           
         </h1>
@@ -135,7 +135,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            发表于 2015-03-28
+            发表于 2015-04-19
           
         </span>
 
@@ -144,7 +144,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; 分类于
               
-                <a href="/categories/test/">test</a>
+                <a href="/categories/groovy/">groovy</a>
 
                 
                 
@@ -167,7 +167,7 @@
         
           <div id="toc" class="toc-article">
 	    <strong class="toc-title">Contents</strong>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#a"><span class="toc-number">1.</span> <span class="toc-text">a</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#b"><span class="toc-number">1.1.</span> <span class="toc-text">b</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c"><span class="toc-number">1.2.</span> <span class="toc-text">c</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#c1"><span class="toc-number">1.2.1.</span> <span class="toc-text">c1</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#流程控制与范围"><span class="toc-number">1.</span> <span class="toc-text">流程控制与范围</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程控制"><span class="toc-number">1.1.</span> <span class="toc-text">流程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#If"><span class="toc-number">1.1.1.</span> <span class="toc-text">If</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Switch"><span class="toc-number">1.1.2.</span> <span class="toc-text">Switch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#For"><span class="toc-number">1.1.3.</span> <span class="toc-text">For</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Range_范围"><span class="toc-number">1.2.</span> <span class="toc-text">Range 范围</span></a></li></ol></li></ol>
 	  </div>
 	
 
@@ -175,10 +175,36 @@
         
 
         
-          <p>[TOC]</p>
-<h1 id="a">a</h1><h2 id="b">b</h2><h2 id="c">c</h2><h3 id="c1">c1</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"> System.out.println(<span class="string">"abc"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> x = <span class="number">2</span></span><br><span class="line">println <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">val</span> <span class="title">x</span>:</span><span class="type">Int</span> = <span class="number">2</span></span><br><span class="line">printn x</span><br></pre></td></tr></table></figure>
+          <p>摘要</p>
+<blockquote>
+<p>布尔环境，Switch（类型匹配，范围匹配），For，Range</p>
+</blockquote>
+<h2 id="流程控制与范围">流程控制与范围</h2><h3 id="流程控制">流程控制</h3><h4 id="If">If</h4><p>Groovy 中在 If 等类似的布尔环境中，表达式会被自动转为布尔值。规则为 <code>0</code>, <code>null</code> 及 <code>empty</code> 为 <strong>false</strong>，其余为 <strong>true</strong>。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> i = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> (i) &#123;</span><br><span class="line">  println <span class="literal">true</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  println <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> list = []</span><br><span class="line"><span class="keyword">if</span> (list) println <span class="literal">true</span> <span class="keyword">else</span> println <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A:</p>
+<p>布尔环境中使用自动转换</p>
+</blockquote>
+<h4 id="Switch">Switch</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (var) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">0</span>: println <span class="number">0</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">11.</span><span class="number">.20</span>: println <span class="string">"11..20"</span>	<span class="comment">//左右都包含</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]: println <span class="string">'[1,2,3]'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> <span class="string">Float:</span> println <span class="string">'Float'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> &#123; it % <span class="number">3</span> == <span class="number">0</span> &#125;: println <span class="string">'Closure'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> ~<span class="string">'[0-9]&#123;3&#125;'</span>: println <span class="string">'Regex'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line"><span class="label">  default:</span> println <span class="string">'Default'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">0</span>)     <span class="comment">//0</span></span><br><span class="line">test(<span class="number">20</span>)    <span class="comment">//11..20</span></span><br><span class="line">test(<span class="number">11</span>)    <span class="comment">//11..20</span></span><br><span class="line">test(<span class="number">30</span>)    <span class="comment">//Closure</span></span><br><span class="line">test(<span class="number">2</span>)     <span class="comment">//[1,2,3]</span></span><br><span class="line">test(<span class="number">1.2</span>f)  <span class="comment">//Float</span></span><br><span class="line">test(<span class="number">100</span>)   <span class="comment">//Regex</span></span><br><span class="line">test(<span class="number">1000</span>)  <span class="comment">//Default</span></span><br></pre></td></tr></table></figure>
+<h4 id="For">For</h4><p>传统的 for 循环</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    println val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>基于 Range 的 for 循环</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0.</span>.&lt; <span class="number">5</span>) &#123;</span><br><span class="line">    println val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>in 的目标可以是范围，映射或者 GString</p>
+<h3 id="Range_范围">Range 范围</h3><p>Range 是特殊的 List</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def range = <span class="number">0.</span><span class="number">.4</span></span><br><span class="line">println range.class         <span class="comment">//class groovy.lang.IntRange</span></span><br><span class="line"><span class="keyword">assert</span> range <span class="keyword">instanceof</span> List</span><br></pre></td></tr></table></figure>
+<p>Range 有以下形式</p>
+<p>左右都包含</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.</span><span class="number">.3</span>			<span class="comment">//表示0,1,2,3</span></span><br></pre></td></tr></table></figure>
+<p>左闭右开</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.</span>.&lt;<span class="number">3</span>			<span class="comment">//表示0,1,2</span></span><br></pre></td></tr></table></figure>
+<p>除了数字，也可以使用字母</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"a"</span>..<span class="string">"e"</span>		<span class="comment">//表示 a,b,c,d,e</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A:</p>
+<p>简单类型时，使用 Range 代替 List</p>
+</blockquote>
+
         
       </div>
     
@@ -188,12 +214,8 @@
         
           <div class="post-tags">
             
-              <a href="/tags/game/">
-                #game
-              </a>
-            
-              <a href="/tags/pc/">
-                #pc
+              <a href="/tags/groovy/">
+                #groovy
               </a>
             
           </div>
@@ -203,11 +225,13 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2015/03/28/second/">second</a>
+                <a href="/2015/04/26/Step-into-Groovy-07-异常/">Step-into-Groovy-07-异常</a>
               
             </div>
 
             <div class="post-nav-next post-nav-item">
+              
+                <a href="/2015/04/19/Step-into-Groovy-05-函数与闭包/">Step-into-Groovy-05-函数与闭包</a>
               
             </div>
           </div>
@@ -306,7 +330,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#a"><span class="nav-number">1.</span> <span class="nav-text">a</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b"><span class="nav-number">1.1.</span> <span class="nav-text">b</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c"><span class="nav-number">1.2.</span> <span class="nav-text">c</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#c1"><span class="nav-number">1.2.1.</span> <span class="nav-text">c1</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制与范围"><span class="nav-number">1.</span> <span class="nav-text">流程控制与范围</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程控制"><span class="nav-number">1.1.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#If"><span class="nav-number">1.1.1.</span> <span class="nav-text">If</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Switch"><span class="nav-number">1.1.2.</span> <span class="nav-text">Switch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#For"><span class="nav-number">1.1.3.</span> <span class="nav-text">For</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Range_范围"><span class="nav-number">1.2.</span> <span class="nav-text">Range 范围</span></a></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>

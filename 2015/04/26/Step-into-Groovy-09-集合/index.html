@@ -22,7 +22,7 @@
 
 	<meta name="keywords" content="groovy," />
 
-  <title> Step-into-Groovy-06-流程控制与范围 // Coffee Time </title>
+  <title> Step-into-Groovy-09-集合 // Coffee Time </title>
 </head>
 
 <body>
@@ -126,7 +126,7 @@
           
           
             
-              Step-into-Groovy-06-流程控制与范围
+              Step-into-Groovy-09-集合
             
           
         </h1>
@@ -135,7 +135,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            发表于 2015-04-19
+            发表于 2015-04-26
           
         </span>
 
@@ -167,7 +167,7 @@
         
           <div id="toc" class="toc-article">
 	    <strong class="toc-title">Contents</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#流程控制与范围"><span class="toc-number">1.</span> <span class="toc-text">流程控制与范围</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程控制"><span class="toc-number">1.1.</span> <span class="toc-text">流程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#If"><span class="toc-number">1.1.1.</span> <span class="toc-text">If</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Switch"><span class="toc-number">1.1.2.</span> <span class="toc-text">Switch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#For"><span class="toc-number">1.1.3.</span> <span class="toc-text">For</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Range_范围"><span class="toc-number">1.2.</span> <span class="toc-text">Range 范围</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#集合"><span class="toc-number">1.</span> <span class="toc-text">集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建集合"><span class="toc-number">1.1.</span> <span class="toc-text">创建集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空集合"><span class="toc-number">1.2.</span> <span class="toc-text">空集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加元素"><span class="toc-number">1.3.</span> <span class="toc-text">添加元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问元素"><span class="toc-number">1.4.</span> <span class="toc-text">访问元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据原列表返回新列表"><span class="toc-number">1.5.</span> <span class="toc-text">根据原列表返回新列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spread_Operator"><span class="toc-number">1.6.</span> <span class="toc-text">Spread Operator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取长度"><span class="toc-number">1.7.</span> <span class="toc-text">获取长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作"><span class="toc-number">1.8.</span> <span class="toc-text">常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#根据列表创建字符串"><span class="toc-number">1.8.1.</span> <span class="toc-text">根据列表创建字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获得集合中重复值的个数"><span class="toc-number">1.8.2.</span> <span class="toc-text">获得集合中重复值的个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其它操作"><span class="toc-number">1.8.3.</span> <span class="toc-text">其它操作</span></a></li></ol></li></ol></li></ol>
 	  </div>
 	
 
@@ -177,33 +177,30 @@
         
           <p>摘要</p>
 <blockquote>
-<p>布尔环境，Switch（类型匹配，范围匹配），For，Range</p>
+<p>创建集合，空集合，添加（&lt;&lt;）及访问元素，+/-，展开操作符，size</p>
 </blockquote>
-<h2 id="流程控制与范围">流程控制与范围</h2><h3 id="流程控制">流程控制</h3><h4 id="If">If</h4><p>Groovy 中在 If 等类似的布尔环境中，表达式会被自动转为布尔值。规则为 <code>0</code>, <code>null</code> 及 <code>empty</code> 为 <strong>false</strong>，其余为 <strong>true</strong>。</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> i = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> (i) &#123;</span><br><span class="line">  println <span class="literal">true</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  println <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> list = []</span><br><span class="line"><span class="keyword">if</span> (list) println <span class="literal">true</span> <span class="keyword">else</span> println <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="集合">集合</h2><h3 id="创建集合">创建集合</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def list = [<span class="string">"Groovy"</span>, <span class="string">"Java"</span>, <span class="string">"Scala"</span>]</span><br><span class="line"><span class="keyword">assert</span> list <span class="keyword">instanceof</span> Collection</span><br><span class="line"><span class="keyword">assert</span> list <span class="keyword">instanceof</span> ArrayList</span><br></pre></td></tr></table></figure>
+<h3 id="空集合">空集合</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def list = []</span><br></pre></td></tr></table></figure>
+<h3 id="添加元素">添加元素</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.add(<span class="string">"Rust"</span>)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list &lt;&lt; <span class="string">"Katlin"</span></span><br></pre></td></tr></table></figure>
+<p>Groovy 中 <code>&lt;&lt;</code> 操作符被重载，以支持向集合中添加元素</p>
+<p>或者</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.putAt(<span class="number">9</span>, <span class="string">"Python"</span>)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def list = []</span><br><span class="line">list[<span class="number">10</span>] = <span class="string">"Ruby"</span></span><br></pre></td></tr></table></figure>
+<h3 id="访问元素">访问元素</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list[<span class="number">2</span>]</span><br><span class="line">list.get(<span class="number">2</span>)</span><br><span class="line">list[-<span class="number">1</span>]</span><br><span class="line">list[-<span class="number">1.</span>.-<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>A:</p>
-<p>布尔环境中使用自动转换</p>
+<p>使用 “&lt;&lt;” 添加元素，使用 “[]” 访问元素</p>
 </blockquote>
-<h4 id="Switch">Switch</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (var) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">0</span>: println <span class="number">0</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">11.</span><span class="number">.20</span>: println <span class="string">"11..20"</span>	<span class="comment">//左右都包含</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]: println <span class="string">'[1,2,3]'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> <span class="string">Float:</span> println <span class="string">'Float'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> &#123; it % <span class="number">3</span> == <span class="number">0</span> &#125;: println <span class="string">'Closure'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  <span class="keyword">case</span> ~<span class="string">'[0-9]&#123;3&#125;'</span>: println <span class="string">'Regex'</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line"><span class="label">  default:</span> println <span class="string">'Default'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">0</span>)     <span class="comment">//0</span></span><br><span class="line">test(<span class="number">20</span>)    <span class="comment">//11..20</span></span><br><span class="line">test(<span class="number">11</span>)    <span class="comment">//11..20</span></span><br><span class="line">test(<span class="number">30</span>)    <span class="comment">//Closure</span></span><br><span class="line">test(<span class="number">2</span>)     <span class="comment">//[1,2,3]</span></span><br><span class="line">test(<span class="number">1.2</span>f)  <span class="comment">//Float</span></span><br><span class="line">test(<span class="number">100</span>)   <span class="comment">//Regex</span></span><br><span class="line">test(<span class="number">1000</span>)  <span class="comment">//Default</span></span><br></pre></td></tr></table></figure>
-<h4 id="For">For</h4><p>传统的 for 循环</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    println val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>基于 Range 的 for 循环</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0.</span>.&lt; <span class="number">5</span>) &#123;</span><br><span class="line">    println val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>in 的目标可以是范围，映射或者 GString</p>
-<h3 id="Range_范围">Range 范围</h3><p>Range 是特殊的 List</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def range = <span class="number">0.</span><span class="number">.4</span></span><br><span class="line">println range.class         <span class="comment">//class groovy.lang.IntRange</span></span><br><span class="line"><span class="keyword">assert</span> range <span class="keyword">instanceof</span> List</span><br></pre></td></tr></table></figure>
-<p>Range 有以下形式</p>
-<p>左右都包含</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.</span><span class="number">.3</span>			<span class="comment">//表示0,1,2,3</span></span><br></pre></td></tr></table></figure>
-<p>左闭右开</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.</span>.&lt;<span class="number">3</span>			<span class="comment">//表示0,1,2</span></span><br></pre></td></tr></table></figure>
-<p>除了数字，也可以使用字母</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"a"</span>..<span class="string">"e"</span>		<span class="comment">//表示 a,b,c,d,e</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>A:</p>
-<p>简单类型时，使用 Range 代替 List</p>
-</blockquote>
+<h3 id="根据原列表返回新列表">根据原列表返回新列表</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def list = [<span class="string">"Groovy"</span>, <span class="string">"Java"</span>, <span class="string">"Scala"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 此操作不会修改原有列表</span></span><br><span class="line">def nlist = list - [<span class="string">"Ruby"</span>, <span class="string">"Scala"</span>, <span class="string">"Java"</span>] + <span class="string">"Swift"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Spread_Operator">Spread Operator</h3><p>展开操作符为 <strong><code>*</code></strong>，用于对集合中的每一个元素进行操作后返回新列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">def numbers2 = numbers*.plus(<span class="number">10</span>)</span><br><span class="line">println(numbers)            <span class="comment">//[1, 2, 3, 4, 3, 4]</span></span><br><span class="line">println(numbers2)           <span class="comment">//[11, 12, 13, 14, 13, 14]</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取长度">获取长度</h3><p>Groovy 中 List, Map, String 等都统一用 size()来获取长度。</p>
+<h3 id="常用操作">常用操作</h3><h4 id="根据列表创建字符串">根据列表创建字符串</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">println numbers.join(<span class="string">","</span>)   <span class="comment">//1,2,3,4,3,4</span></span><br></pre></td></tr></table></figure>
+<h4 id="获得集合中重复值的个数">获得集合中重复值的个数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">println numbers.count(<span class="number">3</span>)    <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<h4 id="其它操作">其它操作</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line">println list.flatten()                  <span class="comment">//展开后返回新列表，-&gt;[1, 2, 3, 4, 5]</span></span><br><span class="line">println list.intersect([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])       <span class="comment">//返回新列表包含交集, -&gt;[3]</span></span><br><span class="line">println list.pop()                      <span class="comment">//[4, 5]</span></span><br><span class="line">println list.reverse()                  <span class="comment">//[3, 2, 1]</span></span><br><span class="line">println list.sort()                     <span class="comment">//返回反转的新列表, -&gt;[1, 2, 3]</span></span><br></pre></td></tr></table></figure>
 
         
       </div>
@@ -225,11 +222,13 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2015/04/26/Step-into-Groovy-10-映射/">Step-into-Groovy-10-映射</a>
+              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2015/04/19/Step-into-Groovy-05-函数与闭包/">Step-into-Groovy-05-函数与闭包</a>
+                <a href="/2015/04/26/Step-into-Groovy-07-异常/">Step-into-Groovy-07-异常</a>
               
             </div>
           </div>
@@ -285,7 +284,7 @@
       <p class="site-description motion-element">努力生活</p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </div>
         <div class="site-state-item site-state-tags">
@@ -328,7 +327,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制与范围"><span class="nav-number">1.</span> <span class="nav-text">流程控制与范围</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程控制"><span class="nav-number">1.1.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#If"><span class="nav-number">1.1.1.</span> <span class="nav-text">If</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Switch"><span class="nav-number">1.1.2.</span> <span class="nav-text">Switch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#For"><span class="nav-number">1.1.3.</span> <span class="nav-text">For</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Range_范围"><span class="nav-number">1.2.</span> <span class="nav-text">Range 范围</span></a></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合"><span class="nav-number">1.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建集合"><span class="nav-number">1.1.</span> <span class="nav-text">创建集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空集合"><span class="nav-number">1.2.</span> <span class="nav-text">空集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加元素"><span class="nav-number">1.3.</span> <span class="nav-text">添加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问元素"><span class="nav-number">1.4.</span> <span class="nav-text">访问元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据原列表返回新列表"><span class="nav-number">1.5.</span> <span class="nav-text">根据原列表返回新列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spread_Operator"><span class="nav-number">1.6.</span> <span class="nav-text">Spread Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取长度"><span class="nav-number">1.7.</span> <span class="nav-text">获取长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用操作"><span class="nav-number">1.8.</span> <span class="nav-text">常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#根据列表创建字符串"><span class="nav-number">1.8.1.</span> <span class="nav-text">根据列表创建字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获得集合中重复值的个数"><span class="nav-number">1.8.2.</span> <span class="nav-text">获得集合中重复值的个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它操作"><span class="nav-number">1.8.3.</span> <span class="nav-text">其它操作</span></a></li></ol></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>

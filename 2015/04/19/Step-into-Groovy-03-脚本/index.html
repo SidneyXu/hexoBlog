@@ -20,9 +20,9 @@
 
 
 
-	<meta name="keywords" content="game,pc," />
+	<meta name="keywords" content="groovy," />
 
-  <title> first // Coffee Time </title>
+  <title> Step-into-Groovy-03-脚本 // Coffee Time </title>
 </head>
 
 <body>
@@ -126,7 +126,7 @@
           
           
             
-              first
+              Step-into-Groovy-03-脚本
             
           
         </h1>
@@ -135,7 +135,7 @@
       <div class="post-meta">
         <span class="post-time">
           
-            发表于 2015-03-28
+            发表于 2015-04-19
           
         </span>
 
@@ -144,7 +144,7 @@
             <span class="post-category">
               &nbsp; | &nbsp; 分类于
               
-                <a href="/categories/test/">test</a>
+                <a href="/categories/groovy/">groovy</a>
 
                 
                 
@@ -167,7 +167,7 @@
         
           <div id="toc" class="toc-article">
 	    <strong class="toc-title">Contents</strong>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#a"><span class="toc-number">1.</span> <span class="toc-text">a</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#b"><span class="toc-number">1.1.</span> <span class="toc-text">b</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c"><span class="toc-number">1.2.</span> <span class="toc-text">c</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#c1"><span class="toc-number">1.2.1.</span> <span class="toc-text">c1</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#脚本"><span class="toc-number">1.</span> <span class="toc-text">脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#运行脚本"><span class="toc-number">1.1.</span> <span class="toc-text">运行脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定变量"><span class="toc-number">1.2.</span> <span class="toc-text">绑定变量</span></a></li></ol></li></ol>
 	  </div>
 	
 
@@ -175,10 +175,18 @@
         
 
         
-          <p>[TOC]</p>
-<h1 id="a">a</h1><h2 id="b">b</h2><h2 id="c">c</h2><h3 id="c1">c1</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"> System.out.println(<span class="string">"abc"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> x = <span class="number">2</span></span><br><span class="line">println <span class="string">"a"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">val</span> <span class="title">x</span>:</span><span class="type">Int</span> = <span class="number">2</span></span><br><span class="line">printn x</span><br></pre></td></tr></table></figure>
+          <p>摘要</p>
+<blockquote>
+<p>运行脚本，绑定域</p>
+</blockquote>
+<h2 id="脚本">脚本</h2><h3 id="运行脚本">运行脚本</h3><p>从命令行中运行指定脚本</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groovy example.groovy</span><br></pre></td></tr></table></figure>
+<p>在其它程序中运行指定脚本</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有一脚本文件 example.groovy</span></span><br><span class="line">def s = <span class="keyword">new</span> example()</span><br><span class="line">s.run()</span><br></pre></td></tr></table></figure>
+<p>也可以通过该脚本对象直接运行脚本内的函数</p>
+<h3 id="绑定变量">绑定变量</h3><p>通过 new 建立的脚本对象可以绑定指定的值到该脚本的绑定域中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//file: example.groovy</span></span><br><span class="line"><span class="comment">//绑定域</span></span><br><span class="line">helloworld = <span class="string">"hello world"</span></span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">  println(helloworld)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//file: other.groovy</span></span><br><span class="line">def s = <span class="keyword">new</span> example()</span><br><span class="line">s.binding.goodbye = <span class="string">"good bye"</span>	<span class="comment">//绑定不存在的变量不会报错</span></span><br><span class="line">s.binding.helloworld = <span class="string">"hello groovy"</span></span><br><span class="line">s.hello()	<span class="comment">//hello groovy</span></span><br></pre></td></tr></table></figure>
+
         
       </div>
     
@@ -188,12 +196,8 @@
         
           <div class="post-tags">
             
-              <a href="/tags/game/">
-                #game
-              </a>
-            
-              <a href="/tags/pc/">
-                #pc
+              <a href="/tags/groovy/">
+                #groovy
               </a>
             
           </div>
@@ -203,11 +207,13 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2015/03/28/second/">second</a>
+                <a href="/2015/04/19/Step-into-Groovy-04-操作符/">Step-into-Groovy-04-操作符</a>
               
             </div>
 
             <div class="post-nav-next post-nav-item">
+              
+                <a href="/2015/04/19/Step-into-Groovy-02-数据类型与作用域/">Step-into-Groovy-02-数据类型与作用域</a>
               
             </div>
           </div>
@@ -306,7 +312,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#a"><span class="nav-number">1.</span> <span class="nav-text">a</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#b"><span class="nav-number">1.1.</span> <span class="nav-text">b</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c"><span class="nav-number">1.2.</span> <span class="nav-text">c</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#c1"><span class="nav-number">1.2.1.</span> <span class="nav-text">c1</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本"><span class="nav-number">1.</span> <span class="nav-text">脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行脚本"><span class="nav-number">1.1.</span> <span class="nav-text">运行脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定变量"><span class="nav-number">1.2.</span> <span class="nav-text">绑定变量</span></a></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
