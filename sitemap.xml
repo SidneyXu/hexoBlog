@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://bookislife.com/2015/04/19/Step-into-Groovy-05-%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%AD%E5%8C%85/</loc>
-    <lastmod>2015-08-10T00:22:37.000Z</lastmod>
+    <loc>http://bookislife.com/2015/08/12/4l4w-01-%E5%AE%89%E8%A3%85-%E8%BF%90%E8%A1%8C/</loc>
+    <lastmod>2015-08-12T00:12:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://bookislife.com/about/index.html</loc>
+    <loc>http://bookislife.com/2015/04/19/Step-into-Groovy-04-%E6%93%8D%E4%BD%9C%E7%AC%A6/</loc>
     <lastmod>2015-08-10T00:22:37.000Z</lastmod>
   </url>
   
@@ -42,12 +42,12 @@
   </url>
   
   <url>
-    <loc>http://bookislife.com/tags/index.html</loc>
+    <loc>http://bookislife.com/2015/04/19/Step-into-Groovy-05-%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%AD%E5%8C%85/</loc>
     <lastmod>2015-08-10T00:22:37.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://bookislife.com/2015/04/19/Step-into-Groovy-04-%E6%93%8D%E4%BD%9C%E7%AC%A6/</loc>
+    <loc>http://bookislife.com/tags/index.html</loc>
     <lastmod>2015-08-10T00:22:37.000Z</lastmod>
   </url>
   
@@ -72,12 +72,17 @@
   </url>
   
   <url>
-    <loc>http://bookislife.com/2015/03/28/second/</loc>
-    <lastmod>2015-03-29T08:39:11.000Z</lastmod>
+    <loc>http://bookislife.com/about/index.html</loc>
+    <lastmod>2015-08-10T00:22:37.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://bookislife.com/2015/03/29/hello-world/</loc>
+    <lastmod>2015-03-29T08:39:11.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://bookislife.com/2015/03/28/second/</loc>
     <lastmod>2015-03-29T08:39:11.000Z</lastmod>
   </url>
   
