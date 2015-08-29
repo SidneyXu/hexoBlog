@@ -5,11 +5,12 @@
 # Site
 title: Coffee Time
 subtitle:
-description: 努力生活
+description: Coding like wring poem (。・`ω´・)
 author: Sidney Xu
 email: siriuseddy@gmail.com
-language:
+language: zh-Hans
 timezone:
+avatar: https://avatars1.githubusercontent.com/u/32269?v=3&s=460
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -79,8 +80,26 @@ feed:
 sitemap:
   path: sitemap.xml
 
-#swiftype
+# swiftype
 swiftype_key: gtFszt63oN72WxGPHkhp
+
+# analytics
+baidu_analytics: 1dcca96f408870b7c0b33bb3ad210577
+
+google_analytics: UA-66541663-1
+
+# Disqus
+disqus_shortname: gitpixelspace
+
+# Social links
+social:
+  GitHub: https://github.com/SidneyXu/
+  Twitter:
+  Weibo:
+  DouBan:
+  ZhiHu:
+
+since: 2015
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
